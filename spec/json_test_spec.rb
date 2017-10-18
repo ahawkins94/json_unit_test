@@ -19,7 +19,11 @@ describe 'JSON example tests' do
   end
 
   it "the colour green should have the RGBA value of '0,255,0,1' " do
-    expect(@json['colors']["green"]).to include [0,255,0,1]
+    @json['colors'].each do |i|
+       if i["color"] == "green"
+         expect(i["code"]["rgba"]).to eq([0,255,0,1])
+       end
+     end
   end
 
 end
