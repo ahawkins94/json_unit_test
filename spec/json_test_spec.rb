@@ -7,21 +7,23 @@ describe 'JSON example tests' do
   end
 
   it 'should have the key colour for each data object' do
-    expect(@json['colors'][0].keys).to include ('color')
+    @json['colors'].each do |i|
+      expect(i.keys).to include('color')
+    end
   end
 
   it "the colour red should have the hex value of '#FF0' " do
     @json['colors'].each do |i|
-       if i["color"] == "red"
-         expect(i["code"]["hex"]).to eq("#FF0")
+       if i['color'] == 'red'
+         expect(i['code']['hex']).to eq('#FF0')
        end
      end
   end
 
   it "the colour green should have the RGBA value of '0,255,0,1' " do
     @json['colors'].each do |i|
-       if i["color"] == "green"
-         expect(i["code"]["rgba"]).to eq([0,255,0,1])
+       if i['color'] == 'green'
+         expect(i['code']['rgba']).to eq([0,255,0,1])
        end
      end
   end
